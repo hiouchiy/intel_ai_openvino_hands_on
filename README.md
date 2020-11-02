@@ -29,7 +29,7 @@ https://docs.docker.jp/docker-for-windows/install.html
 ##### macOS
 https://docs.docker.jp/docker-for-mac/install.html
 #### Dockerイメージのダウンロード
-今回はDocker版のOpenVINOを使用します。OSに直接インストールされたい方は[公式ドキュメント（英語）](https://docs.openvinotoolkit.org/latest/install_directly.html)を参照ください。
+今回はDocker版のOpenVINOを使用します（2020年11月2日現在、バージョン2021R1がダウンロードされる）。OSに直接インストールされたい方は[公式ドキュメント（英語）](https://docs.openvinotoolkit.org/latest/install_directly.html)を参照ください。
 ```Bash
 docker pull openvino/ubuntu18_dev
 ```
