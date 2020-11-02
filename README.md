@@ -1,9 +1,7 @@
 # インテル® OpenVINO™ ツールキットを使ったハンズオン
 OpenVINOを使ってソーシャルディスタンスを検知するアプリをさくっと作ってみます。
-
-なお、本アプリケーションは[こちら](https://github.com/AAEONPROJECT/SocialDistance)をベースにアレンジを加えたものです。事前に作者への了承を取ったうえで使用しております。 
  
-## ハンズオン開始までの手順
+## Getting Started / スタートガイド
 ### ホストOSのポート開放（リモートアクセスする場合のみ）
 このハンズオンではJupyter Labを使用します。特にサーバーにリモートアクセスしながら実施する場合は各環境ごとの手順に則り、ホストOSのポート「8888」番を開放ください。
 ### Dockerインストール
@@ -75,3 +73,7 @@ root@f79f54d47c1b:~# jupyter lab --allow-root --ip=0.0.0.0 --no-browser
 ↑最後の「http://127.0.0.1:8888/?token=2d6863a5b833a3dcb1a57e3252e641311ea7bc8e65ad9ca3」です。
 ### Notebookの起動
 Jupyter Lab上で「intel_ai_openvino_hands_on」フォルダーに入り、その中の「social_distance_app.ipynb」を開き、後はノートブックの内容に従って進めてください。
+## License / ライセンス
+このプロジェクトは Apache 2.0の元にライセンスされています。
+## Acknowledgments / 謝辞
+なお、本アプリケーションは[こちら](https://github.com/AAEONPROJECT/SocialDistance)をベースにアレンジを加えたものです。作者である[Maiko007](https://github.com/Maiko007)と[techc-ego](https://github.com/techc-ego)には事前に了承を取ったうえで使用しております。改めまして、作者の二人には素晴らしいアプリケーションを提供いただいたことに感謝いたします。
