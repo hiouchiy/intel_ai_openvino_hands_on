@@ -8,12 +8,12 @@ OpenVINOを使ってソーシャルディスタンスを検知するアプリを
 #### Linux（Ubuntu 18.04）
 ```Bash
 sudo apt update
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 sudo apt update
 apt-cache policy docker-ce
-sudo apt install docker-ce
+sudo apt install -y docker-ce
 sudo usermod -aG docker ${USER}
 su - ${USER}
 id -nG
@@ -42,7 +42,7 @@ apt-get install -y ubuntu-restricted-extras　
 apt-get install -y ffmpeg
 pip install jupyterlab munkres
 ```
-### 本レポジトリのClone
+### 本レポジトリをClone
 ```Bash
 cd ~
 git clone https://github.com/hiouchiy/intel_ai_openvino_hands_on.git
