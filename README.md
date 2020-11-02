@@ -2,10 +2,16 @@
 OpenVINOを使ってソーシャルディスタンスを検知するアプリをさくっと作ってみます。
  
 ## Getting Started / スタートガイド
-### ホストOSのポート開放（リモートアクセスする場合のみ）
+### Prerequisites / 必要条件
+- Intel CPU（Core or Xeon）を搭載したマシン
+- OS: Linux（Ubuntu 18.04がお薦め）／Windows10／
+macOS
+- Docker（※以下にインストール手順記載）
+### Installing / インストール
+#### ホストOSのポート開放（リモートアクセスする場合のみ）
 このハンズオンではJupyter Labを使用します。特にサーバーにリモートアクセスしながら実施する場合は各環境ごとの手順に則り、ホストOSのポート「8888」番を開放ください。
-### Dockerインストール
-#### Linux（Ubuntu 18.04）
+#### Dockerインストール
+##### Linux（Ubuntu 18.04）
 ```Bash
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
@@ -18,22 +24,22 @@ sudo usermod -aG docker ${USER}
 su - ${USER}
 id -nG
 ```
-#### Windows 10
+##### Windows 10
 https://docs.docker.jp/docker-for-windows/install.html
-#### macOS
+##### macOS
 https://docs.docker.jp/docker-for-mac/install.html
-### Dockerイメージのダウンロード
+#### Dockerイメージのダウンロード
 今回はDocker版のOpenVINOを使用します。OSに直接インストールされたい方は[公式ドキュメント（英語）](https://docs.openvinotoolkit.org/latest/install_directly.html)を参照ください。
 ```Bash
 docker pull openvino/ubuntu18_dev
 ```
-### Dockerコンテナの起動
+#### Dockerコンテナの起動
 コンテナはRootで起動します。また、8888番ポートをホストOSとコンテナとでバインドしておきます。
 ```Bash
 docker run -it -u 0 --privileged -p 8888:8888 openvino/ubuntu18_dev:latest /bin/bash
 ```
 以降はコンテナ上での作業になります。
-### 追加モジュールのインストール
+#### 追加モジュールのインストール
 ```Bash
 apt-get update
 apt-get install -y wget unzip git sudo
@@ -42,16 +48,16 @@ apt-get install -y ubuntu-restricted-extras　
 apt-get install -y ffmpeg
 pip install jupyterlab munkres
 ```
-### 本レポジトリをClone
+#### 本レポジトリをClone
 ```Bash
 cd ~
 git clone https://github.com/hiouchiy/intel_ai_openvino_hands_on.git
 ```
-### Jupyter Labの起動
+#### Jupyter Labの起動
 ```Bash
 jupyter lab --ip=0.0.0.0 --no-browser --allow-root
 ```
-### WebブラウザからJupyter Labにアクセス
+#### WebブラウザからJupyter Labにアクセス
 前のコマンド実行すると以下のようなログが出力されまして、最後にローカルホスト（127.0.0.1）のトークン付きURLが表示されるはずです。こちらをWebブラウザにペーストしてアクセスください。リモートアクセスされている場合はIPアドレスをサーバーのホストOSのIPアドレスに変更してください。
 ```
 root@f79f54d47c1b:~# jupyter lab --allow-root --ip=0.0.0.0 --no-browser
@@ -71,7 +77,7 @@ root@f79f54d47c1b:~# jupyter lab --allow-root --ip=0.0.0.0 --no-browser
      or http://127.0.0.1:8888/?token=2d6863a5b833a3dcb1a57e3252e641311ea7bc8e65ad9ca3
 ```
 ↑最後の「http://127.0.0.1:8888/?token=2d6863a5b833a3dcb1a57e3252e641311ea7bc8e65ad9ca3」です。
-### Notebookの起動
+#### Notebookの起動
 Jupyter Lab上で「intel_ai_openvino_hands_on」フォルダーに入り、その中の「social_distance_app.ipynb」を開き、後はノートブックの内容に従って進めてください。
 ## License / ライセンス
 このプロジェクトは Apache 2.0の元にライセンスされています。
