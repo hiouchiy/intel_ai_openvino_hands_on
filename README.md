@@ -92,7 +92,7 @@ docker pull openvino/model_server:latest
 - https://download.01.org/opencv/2020/openvinotoolkit/2020.1/open_model_zoo/models_bin/1/person-detection-retail-0013/FP32/person-detection-retail-0013.bin
 #### OpenVINO Model Serverを起動
 ```Bash
-docker run -d -v <モデルを格納しているフォルダ>:/models/person-detection/1 -p 9000:9000 openvino/model_server:latest \
+docker run -d -v <モデルを格納しているフォルダへの絶対パス>:/models/person-detection/1 -p 9000:9000 openvino/model_server:latest \
 --model_path /models/person-detection --model_name person-detection --port 9000 --log_level DEBUG --shape auto
 ```
 #### NotebookからOpenVINO Model Serverへアクセス
