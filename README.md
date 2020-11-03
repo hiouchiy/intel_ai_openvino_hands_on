@@ -79,8 +79,9 @@ root@f79f54d47c1b:~# jupyter lab --allow-root --ip=0.0.0.0 --no-browser
 ↑最後の「http://127.0.0.1:8888/?token=2d6863a5b833a3dcb1a57e3252e641311ea7bc8e65ad9ca3」です。
 #### Notebookの起動
 Jupyter Lab上で「intel_ai_openvino_hands_on」フォルダーに入り、その中の「social_distance_app.ipynb」を開き、後はノートブックの内容に従って進めてください。
-## 応用編
-### OpenVINO Model Serverを使ってモデルをWebサービス化
+## 応用編：OpenVINO Model Serverを使ってモデルをWeb API化
+[OpenVINO Model Server](https://github.com/openvinotoolkit/model_server)を使うとOpenVINOのモデルを簡単にWeb API化できます。以下の手順通りにダウンロードおよび起動をしてください。
+### Installing / インストール
 #### OpenVINO Model ServerのDockerイメージをダウンロード
 ホストOS上でもう一つターミナルを開き、下記コマンドを実行
 ```Bash
@@ -91,12 +92,13 @@ docker pull openvino/model_server:latest
 - https://download.01.org/opencv/2020/openvinotoolkit/2020.1/open_model_zoo/models_bin/1/person-detection-retail-0013/FP32/person-detection-retail-0013.xml 
 - https://download.01.org/opencv/2020/openvinotoolkit/2020.1/open_model_zoo/models_bin/1/person-detection-retail-0013/FP32/person-detection-retail-0013.bin
 #### OpenVINO Model Serverを起動
+各パラメータの意味については[こちら](https://github.com/openvinotoolkit/model_server/blob/main/docs/docker_container.md)を参照ください。
 ```Bash
 docker run -d -v <モデルを格納しているフォルダへの絶対パス>:/models/person-detection/1 -p 9000:9000 openvino/model_server:latest \
 --model_path /models/person-detection --model_name person-detection --port 9000 --log_level DEBUG --shape auto
 ```
 #### NotebookからOpenVINO Model Serverへアクセス
-前のコンテナ（Jupyter Lab実行中）にて、Notebook（social_distance_app.ipynb）に戻り、「【応用編】OpenVINO Model Serverを使う」から再開ください。
+前のコンテナ（Jupyter Lab実行中）のNotebook（social_distance_app.ipynb）に戻り、「【応用編】OpenVINO Model Serverを使う」から再開ください。
 ## License / ライセンス
 このプロジェクトは Apache 2.0の元にライセンスされています。
 ## Acknowledgments / 謝辞
