@@ -4,8 +4,10 @@ OpenVINOを使ってソーシャルディスタンスを検知するアプリを
 ## Getting Started / スタートガイド
 ### Prerequisites / 必要条件
 - Intel CPU（Core or Xeon）を搭載したマシン
-- OS: Linux（Ubuntu 18.04がお薦め）／Windows10／
-macOS
+    - Core: 第6世代以上
+    - Xeon: Sandy Bridge以上
+- OS: Linux（Ubuntu 18.04がお薦め）／Windows 10／
+macOS 10.15
 - Docker（※以下にインストール手順記載）
 ### Installing / インストール
 #### ホストOSのポート開放（リモートアクセスする場合のみ）
