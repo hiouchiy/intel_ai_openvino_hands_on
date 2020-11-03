@@ -9,7 +9,7 @@ macOS
 - Docker（※以下にインストール手順記載）
 ### Installing / インストール
 #### ホストOSのポート開放（リモートアクセスする場合のみ）
-このハンズオンではJupyter Labを使用します。特にサーバーにリモートアクセスしながら実施する場合は各環境ごとの手順に則り、ホストOSのポート「8888」番を開放ください。
+このハンズオンではJupyter LabおよびOpenVINO Model Serverを使用します。特にサーバーにリモートアクセスしながら実施する場合は各環境ごとの手順に則り、ホストOSのポート「8888」、「9000」番を開放ください。
 #### Dockerインストール
 ##### Linux（Ubuntu 18.04）
 ```Bash
@@ -79,6 +79,24 @@ root@f79f54d47c1b:~# jupyter lab --allow-root --ip=0.0.0.0 --no-browser
 ↑最後の「http://127.0.0.1:8888/?token=2d6863a5b833a3dcb1a57e3252e641311ea7bc8e65ad9ca3」です。
 #### Notebookの起動
 Jupyter Lab上で「intel_ai_openvino_hands_on」フォルダーに入り、その中の「social_distance_app.ipynb」を開き、後はノートブックの内容に従って進めてください。
+## 応用編
+### OpenVINO Model Serverを使ってモデルをWebサービス化
+#### OpenVINO Model ServerのDockerイメージをダウンロード
+ホストOS上でもう一つターミナルを開き、下記コマンドを実行
+```Bash
+docker pull openvino/model_server:latest
+```
+#### OpenVINOの事前学習済みモデルをダウンロード
+ハンズオンの中で使用した人物検出用の事前学習済みモデルをダウンロードして、ホストOS上の適当なフォルダに格納しておく
+- https://download.01.org/opencv/2020/openvinotoolkit/2020.1/open_model_zoo/models_bin/1/person-detection-retail-0013/FP32/person-detection-retail-0013.xml 
+- https://download.01.org/opencv/2020/openvinotoolkit/2020.1/open_model_zoo/models_bin/1/person-detection-retail-0013/FP32/person-detection-retail-0013.bin
+#### OpenVINO Model Serverを起動
+```Bash
+docker run -d -v <モデルを格納しているフォルダ>:/models/person-detection/1 -p 9000:9000 openvino/model_server:latest \
+--model_path /models/person-detection --model_name person-detection --port 9000 --log_level DEBUG --shape auto
+```
+#### NotebookからOpenVINO Model Serverへアクセス
+前のコンテナ（Jupyter Lab実行中）にて、Notebook（social_distance_app.ipynb）に戻り、「【応用編】OpenVINO Model Serverを使う」から再開ください。
 ## License / ライセンス
 このプロジェクトは Apache 2.0の元にライセンスされています。
 ## Acknowledgments / 謝辞
