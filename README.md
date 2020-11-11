@@ -98,8 +98,7 @@ docker pull openvino/model_server:latest
 #### OpenVINO Model Serverを起動
 各パラメータの意味については[こちら](https://github.com/openvinotoolkit/model_server/blob/main/docs/docker_container.md)を参照ください。
 ```Bash
-docker run -d -v <モデルを格納しているフォルダへの絶対パス>:/models/person-detection/1 -p 9000:9000 openvino/model_server:latest \
---model_path /models/person-detection --model_name person-detection --port 9000 --log_level DEBUG --shape auto
+docker run -d --rm -v <モデルを格納しているフォルダへの絶対パス>:/models/person-detection/1 -p 9000:9000 openvino/model_server:latest --model_path /models/person-detection --model_name person-detection --port 9000 --log_level DEBUG --shape auto
 ```
 #### NotebookからOpenVINO Model Serverへアクセス
 前のコンテナ（Jupyter Lab実行中）のNotebook（social_distance_app.ipynb）に戻り、「【応用編】OpenVINO Model Serverを使う」から再開ください。
